@@ -9,7 +9,7 @@ function AppNav(props) {
     return(
         <AppBar className={ classes.NavColor } position="static">
             <Toolbar variant="dense">     
-                <Typography variant="h4" component="p" className={ classes.TypoColor }>
+                <Typography variant="h5" component="p" className={ classes.TypoColor }>
                     PokeApp
                 </Typography>
             </Toolbar>
@@ -20,8 +20,10 @@ function AppNav(props) {
 export default withStyles({
     NavColor: {
         backgroundColor: '#3a5da9'
+        //backgroundColor: '#EF5350'
     },
     TypoColor: {
         color: '#ffcb05'
+        //color: '#FFFFFF'
     }
 }) (AppNav);

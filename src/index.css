@@ -8,12 +8,12 @@ body {
 }
 
 a {
-  color: #ffffff;
+  color: #000000;
   text-decoration: none;
 }
 
 li a {
-  color: dodgerblue;
+  color: #3f51b5;
 }
 
 code {
@@ -22,7 +22,7 @@ code {
 }
 
 .Background-dark {
-  background-color: #282c34;
+  background-color: #34495e;
   min-height: 100vh;
   color: white;
   text-align: center;

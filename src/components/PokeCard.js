@@ -1,26 +1,30 @@
 import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import { Card, CardMedia, CardContent, Typography } from '@material-ui/core';
+import { Link } from 'react-router-dom';
 
-function PokeCard({ name, classes, image }){
+function PokeCard({ name, classes, image, to='#' }){
     return(
         <Card className={ classes.item }>
-            <CardMedia className={ classes.media } image={ image } />
-            <CardContent>
-                <Typography component="p" variant="h6">{ name }</Typography>
-            </CardContent>
+            <Link to={ to }>
+                <CardMedia className={ classes.media } image={ image } />
+                <CardContent>
+                    <Typography component="p" variant="h6">{ name }</Typography>
+                </CardContent>
+            </Link>
         </Card>
     );
 }
 
 export default withStyles({
     item: {
-        minWidth: '200px',
-        margin: '1em',
+        width: '250px',
+        margin: '2em',
         textAlign: 'center',
-        boxSizing: 'border-box'
+        boxSizing: 'border-box',
+        padding: '1em'
     },
     media: {
-        minHeight: '150px'
+        height: '200px'
     }
 }) (PokeCard);

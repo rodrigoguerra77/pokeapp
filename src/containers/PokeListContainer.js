@@ -10,7 +10,8 @@ class PokeListContainer extends Component {
     }
 
     componentDidMount(){
-        axios.get('https://pokeapi.co/api/v2/pokemon')
+        const url = `${process.env.REACT_APP_POKE_API_BASE_URL}pokemon`;
+        axios.get(url)
         .then(res => {
             const pokeData = res.data.results;
 
