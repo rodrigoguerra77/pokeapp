@@ -7,7 +7,23 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+a {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+li a {
+  color: dodgerblue;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.Background-dark {
+  background-color: #282c34;
+  min-height: 100vh;
+  color: white;
+  text-align: center;
 }
