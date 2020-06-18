@@ -25,6 +25,6 @@ export default withStyles({
         padding: '1em'
     },
     media: {
-        height: '200px'
+        height: '200px',
     }
 }) (PokeCard);

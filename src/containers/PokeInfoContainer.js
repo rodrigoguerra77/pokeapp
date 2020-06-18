@@ -2,6 +2,7 @@ import React,{ Component } from 'react';
 import PokeDescription from "../components/PokeDescription";
 import AppNav from "../components/AppNav";
 import axios from "axios";
+import Spinner from '../components/Spinner';
 
 class PokeInfoContainer extends Component {
 
@@ -12,11 +13,18 @@ class PokeInfoContainer extends Component {
 			pokemonDescription: '',
 			pokeName: '',
 			pokeId: '',
+			height: '',
+			weight: '',
+			types: [],
+			showSpinner: false
 		};
 
 	}
 	
 	componentDidMount() {
+		this.setState({
+            showSpinner: true
+        });
 		const { match } = this.props;
 		const pokeId = match.params.pokeIndex;
 		const pokeName = match.params.pokeName;
@@ -29,24 +37,56 @@ class PokeInfoContainer extends Component {
 				pokeName,
 				pokeId
 			});
+			this.getPokeStats();
+			this.setState({
+              showSpinner: false
+			});
         })
         .catch(error => {
             console.log(error);
         })
 	}
+
+	getPokeStats() {
+		const { pokeId } = this.state;
+		axios.get(`${process.env.REACT_APP_POKE_API_BASE_URL}pokemon/${pokeId}/`)
+		.then(res => {
+			const { height, weight, types } = res.data;
+			this.setState({
+				height,
+				weight,
+				types
+			})
+		})
+		.catch(error => {
+			console.log(error);
+		});
+	}
 	
 	render() {
 		let url = `${process.env.REACT_APP_POKEMON_ART}`;
-		const { pokemonDescription, pokeName, pokeId } = this.state;
+		const { 
+			pokemonDescription, 
+			pokeName, 
+			pokeId, 
+			height, 
+			weight, 
+			types, 
+			showSpinner } = this.state;
 
 		return (
 			<div className="Background-dark">
 				<AppNav />
-				<PokeDescription 
-					name={pokeName} 
-					pokeImage={`${url}${pokeId}.png?raw=true`} 
-					description={pokemonDescription} 
-				/>
+				{ showSpinner ? <Spinner /> :  
+					<PokeDescription 
+						name={pokeName} 
+						pokeImage={`${url}${pokeId}.png?raw=true`} 
+						description={pokemonDescription}
+						height={height}
+						weight={weight}
+						types={types}
+					/>
+				}
 			</div>
 		);
 	}

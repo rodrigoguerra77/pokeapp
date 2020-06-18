@@ -7,8 +7,8 @@ function AppNav(props) {
     const { classes } = props;
 
     return(
-        <AppBar className={ classes.NavColor } position="static">
-            <Toolbar variant="dense">     
+        <AppBar className={ classes.NavColor } position="sticky">
+            <Toolbar>     
                 <Typography variant="h5" component="p" className={ classes.TypoColor }>
                     PokeApp
                 </Typography>
